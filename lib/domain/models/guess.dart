@@ -8,7 +8,7 @@ class Guess {
   final String name;
 
   factory Guess.fromJson(Map<String, dynamic> json) => Guess._(
-        age: json['age'],
-        name: json['name'],
+        age: json['age'] as int,
+        name: json['name'] as String,
       );
 }

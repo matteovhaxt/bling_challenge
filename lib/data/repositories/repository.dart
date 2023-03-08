@@ -18,7 +18,7 @@ class HttpApiRepository implements ApiRepository {
   @override
   Future<Guess> getGuess(String name) => _getData(
         uri: api.guess(name),
-        builder: (json) => Guess.fromJson(json),
+        builder: (json) => Guess.fromJson(json as Map<String, dynamic>),
       );
 
   Future<T> _getData<T>({
