@@ -18,6 +18,9 @@ dependencies:
   # networking
   http: ^0.13.5
 
+  # logic
+  flutter_bloc: ^8.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
