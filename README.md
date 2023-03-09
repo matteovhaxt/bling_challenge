@@ -1,16 +1,12 @@
-# bling_challenge
+# Flutter engineer challenge
 
-A new Flutter project.
+In diesem repo findet ihr das Projekt, entsprechend der [Challenge outline](https://blingcard.notion.site/Flutter-engineer-challenge-f15cb88fbb0a4f2aa7ac78f7f2d24e53).
+Ich habe mich bei der Umsetzung für das Repository-Pattern entschieden.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Mit mehr Zeit und der Ambition aus dieser App ein valides Projekt zu machen, wären meine nächsten Schritte (abgesehen von der Erweiterung der Grund-Funktionalität):
+1. Navigation (z.B. separater Ergebnis-screen)
+2. Logging
+3. Freezed code-generated classes
+4. Custom theme
+5. Hooks implementation
+6. Tests
