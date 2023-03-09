@@ -1,4 +1,5 @@
 import 'package:bling_challenge/presentation/blocs/api_bloc.dart';
+import 'package:bling_challenge/presentation/blocs/storage_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,13 +8,64 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<GuessBloc>();
+    final apiBloc = context.read<GuessBloc>();
+
+    final storageBloc = context.read<StorageBloc>();
 
     final controller = TextEditingController();
 
     final theme = Theme.of(context);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.history,
+        ),
+        onPressed: () {
+          storageBloc.add(
+            GetSearchHistory(),
+          );
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => BlocBuilder<StorageBloc, StorageState>(
+              bloc: storageBloc,
+              builder: (context, state) {
+                if (state.loading) {
+                  return CircularProgressIndicator();
+                }
+                return state.result == null || state.result!.isEmpty
+                    ? Center(
+                        child: Text(
+                          'No search history yet.',
+                          style: theme.textTheme.titleMedium,
+                        ),
+                      )
+                    : ListView.separated(
+                        padding: const EdgeInsets.all(16.0),
+                        separatorBuilder: (context, index) => SizedBox(
+                          height: 10,
+                          child: Divider(),
+                        ),
+                        itemCount: state.result!.length,
+                        itemBuilder: (context, index) => Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              state.result![index].name,
+                              style: theme.textTheme.titleMedium,
+                            ),
+                            Text(
+                              state.result![index].age.toString(),
+                              style: theme.textTheme.titleSmall,
+                            ),
+                          ],
+                        ),
+                      );
+              },
+            ),
+          );
+        },
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -29,6 +81,11 @@ class HomePage extends StatelessWidget {
                       if (state.loading) {
                         return CircularProgressIndicator();
                       } else if (state.result != null) {
+                        storageBloc.add(
+                          AddToSearchHistory(
+                            guess: state.result!,
+                          ),
+                        );
                         return Column(
                           children: [
                             Text(
@@ -88,7 +145,7 @@ class HomePage extends StatelessWidget {
                       onPressed: value.text == ''
                           ? null
                           : () {
-                              bloc.add(
+                              apiBloc.add(
                                 AgeGuess(
                                   name: controller.text,
                                 ),
