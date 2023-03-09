@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:bling_challenge/data/sources/api.dart';
-import 'package:bling_challenge/domain/interfaces/base_repository.dart';
+import 'package:bling_challenge/domain/interfaces/base_api_repository.dart';
 import 'package:bling_challenge/domain/models/guess.dart';
 import 'package:http/http.dart' as http;
 

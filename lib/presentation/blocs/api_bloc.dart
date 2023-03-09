@@ -1,4 +1,4 @@
-import 'package:bling_challenge/data/repositories/repository.dart';
+import 'package:bling_challenge/data/repositories/api_repository.dart';
 import 'package:bling_challenge/data/sources/api.dart';
 import 'package:bling_challenge/domain/models/guess.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

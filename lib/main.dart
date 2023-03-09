@@ -1,4 +1,4 @@
-import 'package:bling_challenge/presentation/blocs/bloc.dart';
+import 'package:bling_challenge/presentation/blocs/api_bloc.dart';
 import 'package:bling_challenge/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
